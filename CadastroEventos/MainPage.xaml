@@ -15,7 +15,8 @@
         
         <Label Text="Cadastro de Evento"
                TextTransform="Uppercase"
-               FontSize="35"
+               FontAttributes="Bold"
+               FontSize="30"
                TextColor="{StaticResource Primary}" />
 
         <Frame Padding="10">
@@ -44,18 +45,23 @@
                         <VerticalStackLayout Spacing="5">
                             <Label Text="Início:"/>
                             <HorizontalStackLayout Spacing="10">
-                                <DatePicker Date="{Binding DataInicio}" 
-                                            Format="dd/MM/yyyy"/>
-                                <TimePicker Time="{Binding HoraInicio}" />
+                                <DatePicker x:Name="dpInicio"
+                                            Date="{Binding DataInicio}" 
+                                            Format="dd/MM/yyyy" />
+                                <TimePicker x:Name="tpInicio"
+                                            Time="{Binding HoraInicio}" />
                             </HorizontalStackLayout>
                         </VerticalStackLayout>
 
                         <VerticalStackLayout Spacing="5">
                             <Label Text="Término:"/>
                             <HorizontalStackLayout Spacing="10">
-                                <DatePicker Date="{Binding DataTermino}" 
-                                            Format="dd/MM/yyyy"/>
-                                <TimePicker Time="{Binding HoraTermino}" />
+                                <DatePicker x:Name="dpTermino"
+                                            Date="{Binding DataTermino}" 
+                                            Format="dd/MM/yyyy"
+                                            MinimumDate="{Binding Source={x:Reference dpInicio}, Path=Date}"/>
+                                <TimePicker x:Name="tpTermino"
+                                            Time="{Binding HoraTermino}" />
                             </HorizontalStackLayout>
                         </VerticalStackLayout>
 

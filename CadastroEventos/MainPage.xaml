@@ -1,0 +1,98 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CadastroEventos.MainPage"             
+             NavigationPage.HasNavigationBar="False"
+             BackgroundColor="{StaticResource White}">
+
+    <ContentPage.BindingContext>
+        <models:Evento xmlns:models="clr-namespace:CadastroEventos.Models"/>
+    </ContentPage.BindingContext>
+
+    <VerticalStackLayout VerticalOptions="CenterAndExpand"
+                         Padding="10"
+                         Spacing="10">
+        
+        <Label Text="Cadastro de Evento"
+               TextTransform="Uppercase"
+               FontSize="35"
+               TextColor="{StaticResource Primary}" />
+
+        <Frame Padding="10">
+            <VerticalStackLayout>
+                
+                <Frame Padding="10" Margin="10">
+                    <VerticalStackLayout>
+
+                        <Label Text="Nome do Evento"
+                           TextTransform="Uppercase"
+                           FontSize="Subtitle"
+                           TextColor="{StaticResource Primary}"/>
+                        <Entry Text="{Binding Nome}" Placeholder="Digite o nome do evento"/>
+                        
+                    </VerticalStackLayout>
+                </Frame>
+
+                <Frame Padding="10" Margin="10">
+                    <VerticalStackLayout Spacing="10">
+
+                        <Label Text="Período do Evento"
+                               TextTransform="Uppercase"
+                               FontSize="Subtitle"
+                               TextColor="{StaticResource Primary}"/>
+
+                        <VerticalStackLayout Spacing="5">
+                            <Label Text="Início:"/>
+                            <HorizontalStackLayout Spacing="10">
+                                <DatePicker Date="{Binding DataInicio}" 
+                                            Format="dd/MM/yyyy"/>
+                                <TimePicker Time="{Binding HoraInicio}" />
+                            </HorizontalStackLayout>
+                        </VerticalStackLayout>
+
+                        <VerticalStackLayout Spacing="5">
+                            <Label Text="Término:"/>
+                            <HorizontalStackLayout Spacing="10">
+                                <DatePicker Date="{Binding DataTermino}" 
+                                            Format="dd/MM/yyyy"/>
+                                <TimePicker Time="{Binding HoraTermino}" />
+                            </HorizontalStackLayout>
+                        </VerticalStackLayout>
+
+
+                    </VerticalStackLayout>
+                </Frame>
+
+                <Frame Padding="10" Margin="10">
+                    <VerticalStackLayout Spacing="5">
+                        <Label Text="Número de Participantes"
+                               TextTransform="Uppercase"
+                               FontSize="Subtitle"
+                               TextColor="{StaticResource Primary}"/>
+                        <Entry Text="{Binding NumeroParticipantes}" Keyboard="Numeric" Placeholder="Digite o número de participantes"/>
+
+                        <Label Text="Local do Evento"
+                               TextTransform="Uppercase"
+                               FontSize="Subtitle"
+                               TextColor="{StaticResource Primary}"/>
+                        <Entry Text="{Binding Local}" Placeholder="Digite o local do evento"/>
+
+                        <Label Text="Custo por Participante"
+                               TextTransform="Uppercase"
+                               FontSize="Subtitle"
+                               TextColor="{StaticResource Primary}"/>
+                        <Entry Text="{Binding CustoPorParticipante}" Keyboard="Numeric" Placeholder="Digite o custo por participante"/>
+
+
+                    </VerticalStackLayout>
+                </Frame>
+
+                <Button Text="Cadastrar Evento" Clicked="Button_Clicked"/>
+
+            </VerticalStackLayout>
+        </Frame>
+
+    </VerticalStackLayout>
+
+
+</ContentPage>

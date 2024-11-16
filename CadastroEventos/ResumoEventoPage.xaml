@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CadastroEventos.ResumoEventoPage"             
+             NavigationPage.HasNavigationBar="False"
+             BackgroundColor="{StaticResource White}">
+
+    <VerticalStackLayout VerticalOptions="FillAndExpand" Padding="10" Spacing="15">
+
+        <!-- Título -->
+        <Label Text="Resumo do Evento"
+               TextColor="{StaticResource Primary}"               
+               FontSize="35"
+               TextTransform="Uppercase"
+               HorizontalTextAlignment="Center"/>
+
+        <!-- Nome do Evento -->
+        <Frame Margin="10" Padding="10" BorderColor="{StaticResource Primary}">
+            <VerticalStackLayout>
+                <Label Text="{Binding Nome}" 
+                       TextTransform="Uppercase"
+                       FontSize="Medium"
+                       TextColor="{StaticResource Primary}" 
+                       HorizontalTextAlignment="Center"/>
+            </VerticalStackLayout>
+        </Frame>
+
+        <!-- Detalhes do Evento -->
+        <Frame Margin="10" Padding="10" BorderColor="{StaticResource Primary}">
+            <Grid ColumnDefinitions="*, *, *" RowDefinitions="Auto, Auto, Auto, Auto">
+                <Label Grid.Row="1" Grid.Column="0" Text="Início:" FontAttributes="Bold" />
+                <Label Grid.Row="2" Grid.Column="0" Text="Término:" FontAttributes="Bold" />
+                <Label Grid.Row="0" Grid.Column="1" Text="Data" FontAttributes="Bold" />
+                <Label Grid.Row="0" Grid.Column="2" Text="Hora" FontAttributes="Bold" />
+
+                <Label Grid.Row="1" Grid.Column="1" Text="{Binding DataInicio, StringFormat='{0:dd/MM/yyyy}'}" />
+                <Label Grid.Row="1" Grid.Column="2" Text="{Binding HoraInicio, StringFormat='{0:hh\\:mm}'}" />
+
+                <Label Grid.Row="2" Grid.Column="1" Text="{Binding DataTermino, StringFormat='{0:dd/MM/yyyy}'}" />
+                <Label Grid.Row="2" Grid.Column="2" Text="{Binding HoraTermino, StringFormat='{0:hh\\:mm}'}" />
+            </Grid>
+        </Frame>
+
+        <!-- Local do Evento -->
+        <Frame Margin="5" Padding="10" BorderColor="{StaticResource Primary}">
+            <VerticalStackLayout>
+                <Label Text="Local do Evento:" FontAttributes="Bold" />
+                <Label Text="{Binding Local}" FontSize="Medium" />
+            </VerticalStackLayout>
+        </Frame>
+
+        <!-- Duração do Evento -->
+        <Frame Margin="5" Padding="10" BorderColor="{StaticResource Primary}">
+            <VerticalStackLayout>
+                <Label Text="Duração Total:" FontAttributes="Bold" />
+                <Label Text="{Binding DuracaoFormatada}" FontSize="Medium" />
+            </VerticalStackLayout>
+        </Frame>
+
+        <!-- Participantes e Preços -->
+        <Frame Margin="5" Padding="10" BorderColor="{StaticResource Primary}">
+            <VerticalStackLayout>
+                <!-- Quantidade de Participantes -->
+                <Label Text="Quantidade de Participantes:" FontAttributes="Bold" />
+                <Label Text="{Binding NumeroParticipantes}" FontSize="Medium" />
+
+                <!-- Preços -->
+                <Label Text="Preços:" FontAttributes="Bold" FontSize="Medium" Margin="0,10,0,5" />
+                <HorizontalStackLayout HorizontalOptions="CenterAndExpand" Spacing="20" VerticalOptions="Center">
+                    <!-- Alinhamento central para os preços -->
+                    <VerticalStackLayout HorizontalOptions="CenterAndExpand" Spacing="5">
+                        <Label Text="Preço Unitário:" FontAttributes="Bold" HorizontalTextAlignment="Center" />
+                        <Label Text="{Binding CustoPorParticipante, StringFormat='R$ {0:F2}'}" FontSize="Medium" HorizontalTextAlignment="Center" />
+                    </VerticalStackLayout>
+                    <VerticalStackLayout HorizontalOptions="CenterAndExpand" Spacing="5">
+                        <Label Text="Preço Total:" FontAttributes="Bold" HorizontalTextAlignment="Center" />
+                        <Label Text="{Binding CustoTotal, StringFormat='R$ {0:F2}'}" FontSize="Medium" HorizontalTextAlignment="Center" />
+                    </VerticalStackLayout>
+                </HorizontalStackLayout>
+            </VerticalStackLayout>
+        </Frame>
+
+        <!-- Botão Voltar -->
+        <Button Text="Voltar"
+                HorizontalOptions="Center"
+                VerticalOptions="EndAndExpand"
+                Clicked="Button_Clicked" />
+    </VerticalStackLayout>
+
+</ContentPage>
